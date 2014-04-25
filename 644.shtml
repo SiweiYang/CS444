@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>
+CS 444/644 - Compiler Construction (Winter 2014)
+</title>
+</head>
+<body>
+<h2>Additional requirements for students taking CS644</h2>
+
+Students enrolled in CS644 are required to carry out a literature survey related to any specific area of compiler construction.
+A survey should include a minimum of 3 papers that the student has carefully read. The student should summarize and explain
+the papers in a coherent and organized way. At least 1/3 of the survey should address the student's personal views on the topic
+including, but not limited to, discussing the contributions and limitations of the literature surveyed.
+<p>
+Each student is required to meet the instructor at least once by February 14th, 2014
+to discuss a topic of interest. A meeting can be scheduled 
+by emailing the instructor directly. It is recommended that the student 
+performs some preliminary search of a topic of interest before attending 
+the meeting. 
+<p>
+By February 27th, 2014, email the instructor a 1-2 page survey topic proposal (in PDF format) addressing the following:
+<ul>
+    <li> Motivation (why is this interesting?)
+    <li> Areas of Related Work (give broad categories of related work, and delimit the scope of your survey)
+</ul>
+
+<p>By April 4th, 2014, submit the completed survey (maximum 6 pages) through email to the instructor, as a PDF file formatted 
+using the <a href="http://www.acm.org/sigs/publications/proceedings-templates">ACM Proceedings format.</a>
+
+<p>
+The 20% marks allotted to this literature survey will be awarded based on the
+following breakdown:
+<ul>
+  <li>Initial meeting with instructor (2% Deadline: 14th February 2014) </li>
+  <li>Survey Topic Proposal (3% Deadline: 27th February 2014)</li>
+  <li>Literature Survey (15% Deadline: 4th April 2014)</li>
+</ul> 
+</body>
+</html>

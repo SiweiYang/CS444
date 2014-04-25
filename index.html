@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>
+CS 444/644 - Compiler Construction (Winter 2014)
+</title>
+</head>
+<body>
+<h1>
+CS 444/644 - Compiler Construction (Winter 2014)
+</h1>
+
+<h2>General</h2>
+<dl>
+    <dt>Lectures:</dt> <dd>Tuesdays and Thursdays, 8:30 -- 9:50 MC 2017
+    <br/>
+    The lectures on Tuesday, February 4th and Thursday, February 6th will be from 9:00 to 9:50 in the same room, MC 2017.
+    </dd>
+
+    <dt>Instructor:</dt> <dd><a href="http://plg.uwaterloo.ca/%7Eolhotak">Ond&#345;ej Lhot&aacute;k</a> (olhotak), DC 2520, Office hours: e-mail for appointment</dd> 
+    <dt>Teaching Assistants:</dt> <dd>Karim Ali, Jonathan Rodriguez (cs444@student.cs)</dd>
+    <dt>Web page:</dt> <dd><a href="http://www.student.cs.uwaterloo.ca/%7Ecs444">
+http://www.student.cs.uwaterloo.ca/~cs444</a></dd>
+    <dt>Newsgroup:</dt> <dd><a href="http://groups.google.ca/group/uw.cs.cs444">
+uw.cs.cs444</a></dd>
+    <dt>Handbook description:</dt> <dd><a href="http://www.cs.uwaterloo.ca/undergrad/handbook/courses/cDescr/CS444.shtml">http://www.cs.uwaterloo.ca/undergrad/handbook/courses/cDescr/CS444.shtml</a></dd>
+    <dt>Final Exam:</dt> <dd>Saturday, April 12, 2014, 9:00 -- 11:30, MC 2017
+    </dd>
+    <dt>Course Description and Objectives:</dt> <dd>
+The objective of the course is to provide a thorough understanding
+of the basic structure of compilers for Java-like languages. A major
+part of the course consists of the implementation of a compiler for a
+simplified Java-like language. The goal of the course is to acquaint
+students with software tools and techniques which are applicable both
+to compilers and the implementation of system utility routines, command
+interpreters, etc.
+    </dd>
+    <dt>Topics covered:</dt> <dd>
+scanning, parsing, abstract syntax trees, scoping and name resolution, type checking, static analysis, runtime organization, code generation.
+    </dd>
+</dl>
+
+<i>Acknowledgement: The Joos-related parts of the course are adapted by
+permission from <a href="http://www.brics.dk/~mis/">Michael Schwartzbach's</a> <a href="http://www.brics.dk/~mis/dOvs/">dOvs course</a> at the University
+of Aarhus.</i>
+<p>
+
+
+
+<h2>Web Resources</h2>
+<ul>
+    <li> <a href="http://proquestcombo.safaribooksonline.com/book/programming/java/0201310082">Gosling, J., Joy, B., Steele, G., Bracha, G., <b>The Java Language Specification, Second Edition</b>, Prentice Hall, 2000.</a>
+    <br>
+    Paper copies can be purchased from 
+    <a href="http://www.amazon.ca/Java%C2%BF-Language-Specification-2nd-Edition/dp/0201310082">amazon.ca</a> or
+    <a href="http://www.amazon.com/Java%C2%BF-Language-Specification-2nd-Edition/dp/0201310082">amazon.com</a>.
+    <br>
+    <i>Each edition of the Java Language Specification specifies a different version
+of the Java language. The Joos language that we will compile in this course
+is a subset of the version of Java specified in the Second Edition.
+You may also find the First Edition useful because it contains an LALR(1)
+grammar for Java.</i>
+    <li> <a href="joos.html">The Joos Languages</a>
+    <li> <a href="parse.pdf">Parsing handout from CS 241</a>
+    <li> <a href="lalr_example.pdf">A LALR(1) DFA example</a>
+    <li> An SLR(1)/LR(1)/LALR(1) parse table generator:
+    <ul>
+        <li><a href="jlalr/Jlalr1.java">Source Code</a>
+        <li><a href="jlalr/cfg.html">Specification of input format of generator</a>
+        <li><a href="jlalr/lr1.html">Specification of output format of generator</a>
+    </ul>
+    <li> An example of an Abstract Syntax Tree (AST) design:
+    <a href="http://help.eclipse.org/help32/index.jsp?topic=/org.eclipse.jdt.doc.isv/reference/api/org/eclipse/jdt/core/dom/package-summary.html">The Eclipse AST for Java</a>
+    <li> Assembly Language Resources:
+    <ul>
+    <li> <a href="http://en.wikibooks.org/wiki/X86_Assembly">x86 Assembly Wikibook</a>
+    <li> <a href="http://asm.sourceforge.net/">Linux Assembly</a>
+    <li> <a href="http://en.wikipedia.org/wiki/X86_calling_conventions">x86 Calling Conventions</a>
+    <li> <a href="http://www.nasm.us/">The Netwide Assembler</a>
+    <li> <a href="http://docs.cs.up.ac.za/programming/asm/derick_tut/syscalls.html">Linux System Call Table</a>
+    </ul>
+</ul>
+<h2>Recommended References</h2>
+<ul>
+    <li> Fischer, C., Cytron, R., LeBlanc, R., <b>Crafting a Compiler</b><br>
+    (An older edition focused on C is: Fischer, C., LeBlanc, R., <b>Crafting a Compiler with C</b>)
+    <li> Appel, A., <b>Modern Compiler Implementation in Java</b> (or ML, or C)
+    <li> Louden, K., <b>Compiler Construction: Principles and Practice</b>
+    <li> Aho, A., Lam, M., Sethi, R., Ullman, J., <b>Compilers: Principles, Techniques, &amp; Tools</b>
+</ul>
+
+<h2>Evaluation</h2>
+<h3>CS 444</h3>
+<table>
+    <tr> <td>Course Project:</td> <td align="right">75%</td> </tr>
+    <tr> <td>- online Marmoset tests:</td> <td align="right">60%</td> </tr>
+    <tr> <td>- written reports:</td> <td align="right">15%</td> </tr>
+    <tr> <td>Final Exam:</td> <td align="right">25%</td> </tr>
+</table>
+You must achieve 50% or more on final exam in order to
+pass the course. If you do not meet this minimum requirement then your final grade for the course will
+be at most your final exam mark.
+<h3>CS 644</h3>
+<table>
+    <tr> <td>Above CS 444 Marking Scheme, scaled:</td> <td align="right">80%</td> </tr>
+    <tr> <td>Literature Survey:</td> <td align="right">20%</td> </tr>
+</table>
+
+<h2>Course Project</h2>
+
+The overall project for the course is to write a compiler from <a
+href="joos.html">Joos 1W</a>, a fairly large subset of Java, to
+i386 assembly language (the <a href="http://www.nasm.us">Netwide
+Assembler</a> dialect). The project will be done in groups of
+three. The project will be broken up into several assignments
+with fixed due dates. The assignments must be submitted to the <a
+href="https://marmoset.student.cs.uwaterloo.ca/">Marmoset</a> on-line submission
+and testing system. For each assignment, you will submit
+both your code and a written report (for assignments 1, 4, and 5) to Marmoset.
+Marks for your code will be reported to you by Marmoset, and your
+marked written reports will be returned to you by e-mail.
+
+<ul>
+    <li><a href="a0.html">Assignment 0: Choosing a group</a> (0%) due Tuesday, January 14, 2014 at 11:59 pm
+    <li><a href="a1.html">Assignment 1: Scanning, Parsing, Weeding, AST Building</a> (13%) due Friday, February 7, 2014 at 11:59 pm
+    <li><a href="a2.html">Assignment 2: Name Resolution</a> (9%) due Wednesday, March 5, 2014 at 11:59 pm
+    <li><a href="a3.html">Assignment 3: Type Checking</a> (9%) due Friday, March 14, 2014 at 11:59 pm
+    <li><a href="a4.html">Assignment 4: Static Analysis</a> (6%) due Friday, March 21, 2014 at 11:59 pm
+    <li><a href="a5.html">Assignment 5: Code Generation</a> (13%) due Friday, April 4, 2014 at 11:59 pm
+</ul>
+
+The above assignment marks total 50% of your final mark. An additional 10%
+will be assigned to secret tests which will be run after
+the assignment 5 deadline.
+<p>
+Students enrolled in CS 644 are required to complete 
+<a href="644.shtml">a literature survey on a topic related to compiler construction.</a>
+
+<h2>Resources available in the <tt>linux.student.cs</tt> environment.</h2>
+<ul>
+<li> Test cases used by Marmoset to test your assignment submissions
+can be found in <tt>/u/cs444/pub/assignment_testcases</tt>. Use these
+testcases to test your solutions and before submitting to Marmoset.
+<li> For this course, a minimalist version of the
+Java standard library is provided. The library versions for each assignment can be found
+in the <tt>linux.student.cs</tt> environment in the directory
+<tt>/u/cs444/pub/stdlib/</tt>. On assignment 2 and later assignments, Marmoset will include all
+files in this library on the <tt>joosc</tt> command line for
+every test, in addition to other source file(s) specific to that
+test. The following versioning scheme is used to make it possible
+to correct errors and/or to extend the library for future assignments
+(although we aim to minimize the number of changes that will be required).
+The 3 in the directory name refers to Assignment 3, and the 0
+is the first version of the library. Any corrections to the Assignment 3
+version of the library will appear in the directories <tt>3.1</tt>,
+<tt>3.2</tt>, etc., and the version of the library for Assignment 4
+will appear in the directory <tt>4.0</tt>.
+Currently all the stdlib versions are the same.
+
+</ul>
+
+
+<h2>Group Work Marking Policy</h2>
+
+When working in a group, disagreements sometimes arise. One of the
+objectives of this course is for you to resolve such disagreements
+with sufficient, constructive, and frank communication within the group.
+Therefore, when disagreements arise, discuss them within the group
+before asking the instructor to intervene. If
+the group fails to reach a resolution, the group as a whole should
+arrange a meeting with the instructor. The instructor's
+role is primarily to mediate the discussion within the group, rather
+than to intervene in the disagreement.
+<p>
+Problems are easier to resolve if handled early. When a problem arises,
+try to resolve it as soon as possible. Do not leave it until
+the end of the course.
+<p>
+At the end of the course, the following policies will be used to
+distribute marks among the group members:
+<ol>
+    <li>Normally, each member of the group will be given an equal
+    mark. You should therefore strive to ensure that each group
+    member makes an approximately equal contribution to the project.
+    <li>The group may propose a different distribution of the marks,
+    provided all group members consent to the distribution. Such a
+    proposal must be made to the instructor within three days after
+    the due date of the last assignment. The marks will be distributed
+    in such a way that the mean of the marks equals the original group
+    mark and no individual project mark exceeds 100%.
+    <li>If agreement cannot be reached, a member of the group must
+    contact the instructor within three days of the due date of
+    the last assignment. The instructor will ask each group member
+    to submit a written statement detailing the contributions of
+    each group member, the nature of the conflict, and the steps
+    that were taken by the group to resolve the conflict. Failure
+    to submit the statement within three days of being asked to
+    do so will result in a mark of zero for that group member.
+    Based on the statements, the instructor will make a final
+    decision about the mark distribution. Note that the instructor
+    will generally not deviate from the equal distribution of marks
+    unless convinced that the group took sufficient and timely steps
+    to resolve the conflict internally.
+</ol>
+
+<h2>Late Policy</h2>
+The written report for each assignment <b>must</b> be submitted by the
+assignment deadline. Reports submitted after the deadline will not be
+marked and will receive a mark of <b>zero</b>. If you cannot finish an
+assignment by the deadline, submit what you have by the deadline,
+and explain any unfinished parts in your report.
+<p>
+For code submissions, the following late policy is in effect: <b>(0.5 * best-on-time) + (0.5 * best-overall)</b>, where<br>
+<ul>
+ <li>best-on-time: is the best submission within the assignment deadline</li>
+ <li>best-overall: is the best overall submission up until 11:59pm, Friday, April 4, 2014.
+</ul>
+Examples:
+<ul>
+  <li> Group gets 90% marks on a January 10th submission of Assignment 1 and there is no submission after the deadline.<br>
+       Mark: (0.5 * 90%) + (0.5 * 90%) = 90%</li>
+  <li> Group gets 50% marks on a January 10th submission of Assignment 1 and 90% on a February 20th re-submission of Assignment 1.<br>
+       Mark: (0.5 * 50%) + (0.5 * 90%) = 70%</li>
+ <li>  Group gets 90% marks on a February 20th submission of Assignment 1.<br>
+       Mark: (0.5 * 0%) + (0.5 * 90%) = 45%</li>
+</ul>
+Submitting an additional solution for an assignment can never reduce your mark.
+
+<h2>Calendar</h2>
+<iframe src="https://www.google.com/calendar/embed?src=tnf02po316ipskke18vjuftm6c%40group.calendar.google.com&ctz=America/Toronto" style="border: 0" 
+    width="640" height="480" frameborder="0" scrolling="no"></iframe>
+
+</body>
+<h2>Academic Integrity Policies</h2>
+<!-- This statement is meant to be included (ie, via SSI) inside of a complete
+     HTML document.  It should *not* be linked to as a standalone page.  
+-->
+
+<div id="academic_integrity_statement">
+
+   <h3>Academic Integrity</h3>
+   <p>In order to maintain a culture of academic
+   integrity, members of the University of Waterloo community are expected
+   to promote honesty, trust, fairness, respect and responsibility.
+   Check the <a href="http://www.uwaterloo.ca/academicintegrity/">Office of
+   Academic Integrity's website</a> for more information.</p>
+
+   <p>All members of the UW community are expected to hold to the highest standard
+   of academic integrity in their studies, teaching, and research.
+   This site explains why academic integrity is important and how students
+   can avoid academic misconduct. It also identifies resources available on
+   campus for students and faculty to help achieve academic integrity in &mdash; and
+   out &mdash; of the classroom.</p>
+
+   <h3>Grievance</h3>
+   <p>A student who believes that a decision affecting some
+   aspect of his/her university life has been unfair or unreasonable may
+   have grounds for initiating a grievance. Read 
+   <a href="http://www.adm.uwaterloo.ca/infosec/Policies/policy70.htm">
+      Policy 70 &mdash; Student Petitions and Grievances</a>, Section 4.  
+   When in doubt please be certain to contact the department's administrative
+   assistant who will provide further assistance. </p>
+
+   <h3>Discipline</h3>
+   <p>A student is expected to know what constitutes academic
+   integrity, to avoid committing academic offenses, and to take
+   responsibility for his/her actions. A student who is unsure whether an
+   action constitutes an offense, or who needs help in learning how to
+   avoid offenses (e.g., plagiarism, cheating) or about "rules" for group
+   work/collaboration should seek guidance from the course professor,
+   academic advisor, or the Undergraduate Associate Dean.  For information on
+   categories of offenses and types of penalties, students should refer to
+   <a href="http://www.adm.uwaterloo.ca/infosec/Policies/policy71.htm">
+   Policy 71 &mdash; Student Discipline</a>.  For typical penalties, check
+   <a href="http://www.adm.uwaterloo.ca/infosec/guidelines/penaltyguidelines.htm">
+   Guidelines for the Assessment of Penalties</a>.
+   </p>
+
+   <h3>Avoiding Academic Offenses</h3>
+   <p>Most students are unaware of the line between acceptable and
+   unacceptable academic behaviour, especially when discussing assignments
+   with classmates and using the work of other students.  For information
+   on commonly misunderstood academic offenses and how to avoid them,
+   students should refer to the
+   <a href="http://www.math.uwaterloo.ca/navigation/Current/cheating_policy.shtml">
+      Faculty of Mathematics Cheating and Student
+      Academic Discipline Policy</a>.
+   </p>
+
+   <h3>Appeals</h3>
+   <p>A decision made or a penalty imposed under Policy 70, Student Petitions
+   and Grievances (other than a petition) or Policy 71, Student Discipline may
+   be appealed if there is a ground.  A student who believes he/she has a 
+   ground for an appeal should refer to
+   <a href="http://www.adm.uwaterloo.ca/infosec/Policies/policy72.htm">
+      Policy 72 &mdash; Student Appeals</a>.
+   </p>
+
+   <h3>Note for students with disabilities</h3>
+   <p><a
+   href="https://uwaterloo.ca/disability-services/">AccessAbility Services</a> 
+   (formerly the Office for Persons with Disabilities or OPD), 
+   located in Needles Hall, Room 1132,
+   collaborates with all academic departments to arrange appropriate
+   accommodations for students with disabilities without compromising the
+   academic integrity of the curriculum. If you require academic accommodations
+   to lessen the impact of your disability, please register with the OPD at the
+   beginning of each academic term.</p>
+
+</div>
+
+
+</html>

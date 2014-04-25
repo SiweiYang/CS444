@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>
+CS 444/644 - Compiler Construction (Winter 2014) - Assignment 1
+</title>
+</head>
+<body>
+<h1>
+CS 444/644 - Compiler Construction (Winter 2014) - Assignment 1
+</h1>
+
+<!-- <font color=red>Corrections since the assignment was posted are in red.</font> -->
+
+<h2>Scanning, Parsing, Weeding, AST Building</h2>
+
+The first assignment to implement lexical and syntactic analysis.
+The scanner splits up the input into tokens and catches lexical
+errors (inputs that cannot form valid tokens).
+The parser checks that the input list of tokens conforms to
+a syntax specified using a context-free grammar.
+The weeding stage detects simple errors that generally could
+have been checked by a context-free grammar, but
+this would make the grammar very complicated.
+Once the checks have been done, it is convenient to convert
+the initial parse tree, which follows the context-free
+grammar used for parsing, into a simpler Abstract Syntax
+Tree.
+It is recommended that your design follow the above four
+stages, though it is not required, as long as you somehow
+implement the lexical and syntactic specification of Joos 1W.
+<p>
+You must hand in to Marmoset a <tt>.zip</tt> archive containing
+your source code. The <tt>.zip</tt> file must contain a file called
+<tt>Makefile</tt>. Marmoset will run <tt>make</tt> on this <tt>Makefile</tt>
+to compile your compiler. The <tt>Makefile</tt> must generate an executable
+(binary or shell script) called <tt>joosc</tt>. When run with a single
+argument, a filename, <tt>joosc</tt> should process the given Joos 1W file,
+produce appropriate diagnostic messages on standard error,
+and exit with one of the following Unix return codes:
+<ul>
+    <li>0: the input file is lexically/syntactically valid Joos 1W
+    <li>42: the input file is <b>not</b> lexically/syntactically valid Joos 1W
+    <li>any other value: your compiler crashed
+</ul>
+<p>
+The Marmoset tests for this assignment take several minutes to run.
+Do not submit more than one submission at a time to Marmoset.
+If Marmoset reports that your previous submission has not been tested
+yet, do not submit another one. Denial-of-service attacks on Marmoset
+will result in disciplinary action.
+<p>
+The following restrictions of the Joos 1W language must be
+checked (either in the parser or in the weeder):
+<ul>
+    <li>All characters in the input program must be in the range of 7-bit ASCII (0 to 127).
+    <li>A class cannot be both abstract and final.
+    <li>A method has a body if and only if it is neither abstract nor native.
+    <li>An abstract method cannot be static or final.
+    <li>A static method cannot be final.
+    <li>A native method must be static.
+    <li>The type <tt>void</tt> may only be used as the return type of a method.
+    <li>A formal parameter of a method must not have an initializer.
+    <li>A class/interface must be declared in a <tt>.java</tt> file with the same base name as the class/interface.
+    <li>An interface cannot contain fields or constructors.
+    <li>An interface method cannot be static, final, or native.
+    <li>An interface method cannot have a body.
+    <li>Every class must contain at least one explicit constructor.
+    <li>No field can be final.
+    <li>No multidimensional array types or array creation expressions are allowed.
+    <li>A method or constructor must not contain explicit <tt>this()</tt> or <tt>super()</tt> calls.
+</ul>
+
+This phase of the compiler should also determine the values of all literals
+in the program. For integer literals, it must check that the literal
+is within the range of a Java <tt>int</tt>. For character and
+string literals, it must expand any escape sequences in the literal.
+<p>
+Submit to Marmoset a PDF document of no more than five pages explaining
+the design of this phase of your compiler. The document should be
+organized to enable someone unfamiliar with your code to understand the
+structure of (this phase of) your compiler. In the document, discuss
+challenges that you encountered and how you tried to overcome them in
+your design and implementation. Also explain the testing that you
+did before submitting to Marmoset.
+<p>
+The document will be hand-marked, with 2/3 of the marks for
+organization, clarity, and style, and 1/3 of the marks for
+technical content.
+</body>
+</html>

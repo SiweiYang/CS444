@@ -1,0 +1,10 @@
+<pre>
+public class A {
+  public A() {}
+  public A(Object x, Object y) {}
+  public A(Object x, A y) {}
+  public void m() {
+    <font color=blue>new A(new A(), new A());</font>
+  }
+}
+</pre>

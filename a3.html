@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>
+CS 444/644 - Compiler Construction (Winter 2014) - Assignment 3
+</title>
+</head>
+<body>
+<h1>
+CS 444/644 - Compiler Construction (Winter 2014) - Assignment 3
+</h1>
+
+<!-- <font color=red>Corrections since the assignment was posted are in red.</font> -->
+<p>
+For the third assignment, you will implement disambiguation of names and
+type checking.
+<p>
+As in Assignment 2,
+you must hand in to Marmoset a <tt>.zip</tt> archive containing
+your source code. The <tt>.zip</tt> file must contain a file called
+<tt>Makefile</tt>. Marmoset will run <tt>make</tt> on this <tt>Makefile</tt>
+to compile your compiler. The <tt>Makefile</tt> must generate an executable
+(binary or shell script) called <tt>joosc</tt>.
+The <tt>joosc</tt> executable must accept multiple
+filenames as arguments. All of the files listed on the <tt>joosc</tt>
+command line, and <b>only</b> those files, are considered part of
+the program being compiled.
+<p>
+Unlike <tt>javac</tt> and unlike the dOvs version of Joos, your <tt>joosc</tt>
+compiler should not look for classes in <tt>.class</tt> files on the
+<tt>CLASSPATH</tt>; it should read <b>only</b> the Joos 1W source files
+listed on the command line. This means that all classes, including
+classes such as <tt>java.lang.Object</tt>, must be available in
+source form and must be specified on the <tt>joosc</tt> command line.
+Unlike <tt>javac</tt>, Joos does not care what directory a source
+file is in (i.e. it does not require the directory structure
+of the source code to match the package structure).
+However, the class declared in a file must still have the same name
+as the filename.
+For example, Java would require that the class <tt>java.lang.Object</tt>
+be declared in the file <tt>Object.java</tt> in the directory
+<tt>java.lang</tt>, whereas Joos only requires the file to
+be named <tt>Object.java</tt>, but otherwise allows it to
+be in any directory.
+<p>
+For the purposes of this course, a minimalist version of the
+Java standard library is provided. This library can be found
+in the <tt>linux.student.cs</tt> environment in the directory
+<tt>/u/cs444/pub/stdlib/3.0</tt>. Marmoset will include all
+files in this library on the <tt>joosc</tt> command line for
+every test, in addition to other source file(s) specific to that
+test. The following versioning scheme is used to make it possible
+to correct errors and/or to extend the library for future assignments
+(although we aim to minimize the number of changes that will be required).
+The 3 in the directory name refers to Assignment 3, and the 0
+is the first version of the library. Any corrections to the Assignment 3
+version of the library will appear in the directories <tt>3.1</tt>,
+<tt>3.2</tt>, etc., and the version of the library for Assignment 4
+will appear in the directory <tt>4.0</tt>.
+<p>
+Version 3.0 of the standard library is identical to version 2.0.
+<p>
+As in previous assignments,
+<tt>joosc</tt> should process the Joos 1W files given on the command line,
+produce appropriate diagnostic messages on standard error,
+and exit with one of the following Unix return codes:
+<ul>
+    <li>0: the input file is valid Joos 1W
+    <li>42: the input file is <b>not</b> valid Joos 1W
+    <li>any other value: your compiler crashed
+</ul>
+<p>
+The Marmoset tests for this assignment take several minutes to run.
+Do not submit more than one submission at a time to Marmoset.
+If Marmoset reports that your previous submission has not been tested
+yet, do not submit another one. Denial-of-service attacks on Marmoset
+will result in disciplinary action.
+<p>
+You are not required to submit a design document for this assignment.
+However, Assignment 4 will require a design document covering
+your design decisions for Assignments 2, 3, and 4, so it is
+recommended that you start writing such a document.
+As for Assignment 1,
+the document should be
+organized to enable someone unfamiliar with your code to understand the
+structure of your compiler. In the document, discuss
+challenges that you encountered and how you tried to overcome them in
+your design and implementation. Also explain the testing that you
+did before submitting to Marmoset.
+
+<h2>Disambiguation and Linking of Names</h2>
+
+The disambiguation stage determines the meaning of each remaining use
+of a name, and links the use to the declaration of the
+entity (field, method, local variable, formal parameter, or type)
+that the name refers to. Disambiguation of syntactically ambiguous names is
+specified in Section 6.5.2 of the Java Language Specification
+and was discussed in class.
+<p>
+Note that Joos 1W supports a simplified version of method overloading
+compared to the full Java overloading rules detailed in Section 15.12.2
+of the Java Language Specification. Although Joos 1W does allow
+method overloading (i.e. multiple methods with the same name,
+but different parameter types),
+the declared types of the parameters must exactly match
+the static types of the argument expressions in order for the
+method to be called. For example, a call such as <tt>bar('x')</tt>
+will not invoke a method with signature <tt>bar(int)</tt>,
+as it would in Java, but the call <tt>bar((int)'x')</tt> would.
+<p>
+If a prefix of a name refers to a variable or field, then
+the remaining part of the name refers to non-static field(s)
+or a method of the object referred to by that variable or field.
+At this stage, non-static fields and methods are not resolved;
+this is deferred until the type checking stage, when the
+static type of the base variable or field is known.
+<p>
+During and/or after disambiguation of names, the following restrictions
+of the Joos 1W language must be checked:
+<ul>
+    <li>Check that all names (except non-static field and method
+    accesses) can be disambiguated. It is an
+    error if a name cannot be linked to any entity that is in scope at the
+    point where the name is used.
+    <li>Check the rules specified in Section 8.3.2.3 of the Java Language
+    Specification regarding forward references. The initializer of a
+    non-static field must not use (i.e. read) by simple name
+    (i.e. without an explicit <tt>this</tt>) itself or a non-static
+    field declared later in the same class.
+</ul>
+
+<h2>Type Checking</h2>
+
+The type checking stage determines the types of all expressions
+and subexpressions, checks that they conform to the Joos 1W
+typing rules, and links all remaining names (i.e. non-static
+field accesses and method calls) to the declarations that they
+refer to.
+<p>
+It is possible for a class to contain multiple methods with the
+same signature, all abstract, and all inherited from one of its
+superclasses. In this case, the method call may be linked to
+any one of these methods, since they are guaranteed to have the
+same return type.
+<p>
+During and/or after type checking, the following restrictions
+of the Joos 1W language must be checked:
+<ul>
+    <li>Check that the types of all expressions and subexpressions
+    conform to the Joos 1W typing rules, and that all statements
+    are type-correct. The Joos 1W typing rules are the same as the
+    Java typing rules with the following exceptions:
+    <ul>
+        <li>Assignability is the same as in Java (see Section 5.2
+        of the Java Language Specification), except that
+        narrowing conversions are never allowed.
+        <li>In a cast to a reference type <tt>T</tt> and in an
+        <tt>instanceof</tt> expression comparing to reference type <tt>T</tt>,
+        the type of the subexpression <tt>S</tt> must be such that
+        <tt>S</tt> is assignable to <tt>T</tt> or <tt>T</tt>
+        is assignable to <tt>S</tt>. This is a simplification
+        of the rules specified in Section 5.5 of the Java Language
+        Specification. The rules for casts to primitive types
+        are the same as in Java.
+    </ul>
+    <li>Check that all non-static field and method uses can
+    be resolved to fields and methods that exist.
+    <li>Check that fields/methods accessed as static are actually
+    static, and that fields/methods accessed as non-static are actually
+    non-static.
+    <li>Check that all accesses of protected fields, methods and constructors
+    are in a subtype of the type declaring the entity being accessed,
+    or in the same package as that type.
+    <li>Check that the name of a constructor is the same as the name of
+    its enclosing class.
+    <li>A constructor in a class other than <tt>java.lang.Object</tt>
+    implicitly calls the zero-argument constructor of its superclass.
+    Check that this zero-argument constructor exists.
+    <li>Check that no objects of abstract classes are created.
+    <li>Check that no bitwise operations occur.
+    <li>Check that the implicit <tt>this</tt> variable is not accessed
+    in a static method or in the initializer of a static field.
+</ul>
+
+</body>
+</html>

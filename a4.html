@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>
+CS 444/644 - Compiler Construction (Winter 2014) - Assignment 4
+</title>
+</head>
+<body>
+<h1>
+CS 444/644 - Compiler Construction (Winter 2014) - Assignment 4
+</h1>
+
+<!-- <font color=red>Corrections since the assignment was posted are in red.</font> -->
+<p>
+For the fourth assignment, you will implement static reachability analysis,
+and check that all variables have an initializer.
+<p>
+As in previous assignments,
+you must hand in to Marmoset a <tt>.zip</tt> archive containing
+your source code. The <tt>.zip</tt> file must contain a file called
+<tt>Makefile</tt>. Marmoset will run <tt>make</tt> on this <tt>Makefile</tt>
+to compile your compiler. The <tt>Makefile</tt> must generate an executable
+(binary or shell script) called <tt>joosc</tt>.
+The <tt>joosc</tt> executable must accept multiple
+filenames as arguments. All of the files listed on the <tt>joosc</tt>
+command line, and <b>only</b> those files, are considered part of
+the program being compiled.
+<p>
+Unlike <tt>javac</tt> and unlike the dOvs version of Joos, your <tt>joosc</tt>
+compiler should not look for classes in <tt>.class</tt> files on the
+<tt>CLASSPATH</tt>; it should read <b>only</b> the Joos 1W source files
+listed on the command line. This means that all classes, including
+classes such as <tt>java.lang.Object</tt>, must be available in
+source form and must be specified on the <tt>joosc</tt> command line.
+Unlike <tt>javac</tt>, Joos does not care what directory a source
+file is in (i.e. it does not require the directory structure
+of the source code to match the package structure).
+However, the class declared in a file must still have the same name
+as the filename.
+For example, Java would require that the class <tt>java.lang.Object</tt>
+be declared in the file <tt>Object.java</tt> in the directory
+<tt>java.lang</tt>, whereas Joos only requires the file to
+be named <tt>Object.java</tt>, but otherwise allows it to
+be in any directory.
+<p>
+For the purposes of this course, a minimalist version of the
+Java standard library is provided. This library can be found
+in the <tt>linux.student.cs</tt> environment in the directory
+<tt>/u/cs444/pub/stdlib/4.0</tt>. Marmoset will include all
+files in this library on the <tt>joosc</tt> command line for
+every test, in addition to other source file(s) specific to that
+test. The following versioning scheme is used to make it possible
+to correct errors and/or to extend the library for future assignments
+(although we aim to minimize the number of changes that will be required).
+The 4 in the directory name refers to Assignment 4, and the 0
+is the first version of the library. Any corrections to the Assignment 4
+version of the library will appear in the directories <tt>4.1</tt>,
+<tt>4.2</tt>, etc., and the version of the library for Assignment 5
+will appear in the directory <tt>5.0</tt>.
+<p>
+Version 4.0 of the standard library is identical to version 3.0.
+<p>
+As in previous assignments,
+<tt>joosc</tt> should process the Joos 1W files given on the command line,
+produce appropriate diagnostic messages on standard error,
+and exit with one of the following Unix return codes:
+<ul>
+    <li>0: the input file is valid Joos 1W
+    <li>42: the input file is <b>not</b> valid Joos 1W
+    <li>any other value: your compiler crashed
+</ul>
+<p>
+The Marmoset tests for this assignment take several minutes to run.
+Do not submit more than one submission at a time to Marmoset.
+If Marmoset reports that your previous submission has not been tested
+yet, do not submit another one. Denial-of-service attacks on Marmoset
+will result in disciplinary action.
+<p>
+Submit to Marmoset a PDF document of no more than ten pages explaining
+the design decisions you made in completing
+Assignments 2, 3, and 4.
+As for Assignment 1,
+the document should be
+organized to enable someone unfamiliar with your code to understand the
+structure of your compiler. In the document, discuss
+challenges that you encountered and how you tried to overcome them in
+your design and implementation. Also explain the testing that you
+did before submitting to Marmoset.
+<p>
+The document will be hand-marked, with 2/3 of the marks for
+organization, clarity, and style, and 1/3 of the marks for
+technical content.
+<p>
+According to the late policy posted on the course web page,
+design documents submitted after the assignment deadline
+will not be marked and will receive a mark of <b>zero</b>.
+If you cannot finish the
+assignment by the deadline, submit what you have by the deadline,
+and explain any unfinished parts in your design document.
+
+<h2>Reachability Checking</h2>
+
+This phase must check the following restrictions of the Joos 1W language:
+<ul>
+    <li>All statements must be reachable. Details of the exact definition
+    of reachability are specified in Section 14.20 of the Java Language
+    Specification.
+    <li>The last statement on every finite-length execution path through a method whose return
+    type is not <tt>void</tt> must be a return statement.
+    <li>Every local variable must have an initializer, and the variable must
+    not occur in its own initializer.
+</ul>
+
+</body>
+</html>

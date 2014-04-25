@@ -1,0 +1,15 @@
+<pre>
+public class A {
+  public int m(java.io.FileInputStream x) throws java.io.IOException{
+    int y;
+    try {
+      y = x.read();
+    } catch (java.io.IOException e) {
+      y = 42;
+    } <font color=blue>finally</font> {
+      x.close();
+    }
+    return y;
+  }
+}
+</pre>

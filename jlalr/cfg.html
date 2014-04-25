@@ -1,0 +1,41 @@
+<html><head></head><body><h1>CFG File Format (.cfg) CS 444, Winter 
+2014</h1>
+A .cfg file is a text file representing a context-free grammar.
+<h3>Context-free Grammar Representation</h3>
+The context-free grammar representation has four components, in order:
+<ul>
+<li><i>t</i>, a positive integer giving the number of terminal symbols in the grammar, followed
+by <i>t</i> lines, each containing the name of a distinct terminal symbol.  Each terminal symbol may
+be any string of one or more printable ascii characters, excluding white space.
+</li><li><i>n</i>, a positive integer giving the number of nonterminal symbols in the grammar, followed
+by <i>n</i> lines, each containing the name of a distinct nonterminal symbol.  Each nonterminal
+symbol may be any string of one or more printable ascii characters, and must not be the same as any terminal symbol.
+</li><li>A single line giving the name of the start symbol, which must be one of the nonterminal symbols
+</li><li><i>r</i>, a positive integer giving the number of production rules in the grammar, followed by <i>r</i> lines, each denoting a rule consisting of:
+<ul><li>The left-hand-side (LHS) of the rule; a nonterminal symbol
+</li><li>The right-hand-side (RHS) of the rule; zero or more terminal
+or nonterminal symbols separated from each other, and from the LHS by a
+single space
+</li></ul>
+</li></ul>
+<h3>Example .cfg file (<a href="./sample.cfg">sample.cfg</a>)</h3>
+<pre>6
+BOF
+EOF
+id
+-
+(
+)
+3
+S
+expr
+term
+S
+5
+S BOF expr EOF
+expr term
+expr expr - term
+term id
+term ( expr )
+</pre>
+</body></html>

@@ -1,0 +1,534 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>The Joos Languages</title>
+</head>
+<body>
+
+<h1>The Joos Languages</h1>
+
+<i>Acknowledgement: The Joos-related parts of the course are adapted by
+permission from <a href="http://www.brics.dk/~mis/">Michael Schwartzbach's</a> <a href="http://www.brics.dk/~mis/dOvs/">dOvs course</a> at the University
+of Aarhus.</i>
+<p>
+The Joos 1W language is defined as a subset of Java 1.3 as specified
+in the <a href="http://java.sun.com/docs/books/jls/">Java Language
+Specification, Second Edition</a>. Some features of Java 1.3
+are not included in Joos 1W. Thus the parts of the JLS pertaining
+to these features do not apply to Joos 1W. The following chart
+shows the features of Java 1.3, and the specific subset of features
+included in Joos 1W (as well as the original dialects Joos 0, 1, and 2 from
+the dOvs course). Clicking on each feature shows example code.
+
+
+<table border=1>
+<tr>
+<td align=center colspan=6><b>Class structure</b></td>
+</tr>
+<tr>
+  <td><i>Feature</i></td>
+  <td><i>Joos 0</i></td>
+  <td><i>Joos 1</i></td>
+  <td><i><b>Joos 1W</b></i></td>
+  <td><i>Joos 2</i></td>
+  <td><i>Java 1.3</i></td>
+</tr>
+<tr><td><a href="features/extends.html">extends</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/implements.html">implements</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/staticmethoddeclaration.html">static method declaration</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/classimport.html">class import</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/packageimport.html">package import</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/package.html">package</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/interfaces.html">public interfaces</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/staticfielddeclaration.html">static field declaration</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/ppinterfaces.html">package private interfaces</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/omittedfinalfieldinitializer.html">omitted final field initializer</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/multiplefieldsperdeclaration.html">multiple fields per declaration</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/multipletypesperfile.html">multiple types per file</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/interfaceconstants.html">interface constants</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/unicodeinput.html">Unicode input</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/nestedtypes.html">nested types</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr>
+<td align=center colspan=6><b>Method and field access</b></td>
+</tr>
+<tr>
+  <td><i>Feature</i></td>
+  <td><i>Joos 0</i></td>
+  <td><i>Joos 1</i></td>
+  <td><i><b>Joos 1W</b></i></td>
+  <td><i>Joos 2</i></td>
+  <td><i>Java 1.3</i></td>
+</tr>
+<tr><td><a href="features/externalcall.html">external call</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/implicitthisforfields.html">implicit this for fields</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/implicitthisformethods.html">implicit this for methods</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/accessstaticfield.html">access static field</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/callstaticmethods.html">call static methods</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/nonthisfieldaccess.html">non-this field access</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/methodoverloading.html">method overloading</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/arraylength.html">array length</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/implicitthisclassforstaticfields.html">implicit this class for static fields</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/implicitthisclassforstaticmethods.html">implicit this class for static methods</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/closestmatchmethodoverloading.html">closest match method overloading</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/arraymethodcall.html">array method call</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/supermethodcall.html">super method call</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/superfieldaccess.html">super field access</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/nonstaticaccessofstaticfield.html">non-static access of static field</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/nonstaticaccessofstaticmethod.html">non-static access of static method</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr>
+<td align=center colspan=6><b>Modifiers</b></td>
+</tr>
+<tr>
+  <td><i>Feature</i></td>
+  <td><i>Joos 0</i></td>
+  <td><i>Joos 1</i></td>
+  <td><i><b>Joos 1W</b></i></td>
+  <td><i>Joos 2</i></td>
+  <td><i>Java 1.3</i></td>
+</tr>
+<tr><td><a href="features/publicclasses.html">public classes</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/protectedfields.html">protected fields</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/publicconstructors.html">public constructors</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/publicmethods.html">public methods</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/publicfields.html">public fields</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/protectedmethods.html">protected methods</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/abstract.html">abstract</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/finalclasses.html">final classes</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/finalmethods.html">final methods</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/protectedconstructors.html">protected constructors</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/finalfields.html">final field declaration</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/synchronized.html">synchronized</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/transient.html">transient</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/strictfp.html">strictfp</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/nativeint.html">restricted static native int m(int)</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>X</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/native.html">general native methods</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/volatile.html">volatile</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/packageprivateclasses.html">package private classes</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/packageprivatemethods.html">package private methods and constructors</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/packageprivatefields.html">package private fields</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/privatemethods.html">private methods and constructors</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/privatefields.html">private fields</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/finalformals.html">final formals</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/finallocals.html">final locals</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr>
+<td align=center colspan=6><b>Constructors</b></td>
+</tr>
+<tr>
+  <td><i>Feature</i></td>
+  <td><i>Joos 0</i></td>
+  <td><i>Joos 1</i></td>
+  <td><i><b>Joos 1W</b></i></td>
+  <td><i>Joos 2</i></td>
+  <td><i>Java 1.3</i></td>
+</tr>
+<tr><td><a href="features/implicitsupercall.html">implicit super call</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/fieldinitializers.html">field initializers</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/constructoroverloading.html">constructor overloading</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/omittedconstructor.html">omitted constructor</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/explicitsupercall.html">explicit super call</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/closestmatchconstructoroverloading.html">closest match constructor overloading</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/thiscall.html">this call</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/instanceinitializers.html">instance initializers</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/staticinitializers.html">static initializers</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr>
+<td align=center colspan=6><b>Method structure</b></td>
+</tr>
+<tr>
+  <td><i>Feature</i></td>
+  <td><i>Joos 0</i></td>
+  <td><i>Joos 1</i></td>
+  <td><i><b>Joos 1W</b></i></td>
+  <td><i>Joos 2</i></td>
+  <td><i>Java 1.3</i></td>
+</tr>
+<tr><td><a href="features/nestedblocks.html">nested blocks</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/arbitraryreturn.html">arbitrary return</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/omittedvoidreturn.html">omitted void return</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/arbitrarylocaldeclaration.html">arbitrary local declaration</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/omittedlocalinitializer.html">omitted local initializer</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/localvariableinowninitializer.html">local variable in
+own initializer</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/multiplevariablesperdeclaration.html">multiple variables per declaration</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr>
+<td align=center colspan=6><b>Control flow</b></td>
+</tr>
+<tr>
+  <td><i>Feature</i></td>
+  <td><i>Joos 0</i></td>
+  <td><i>Joos 1</i></td>
+  <td><i><b>Joos 1W</b></i></td>
+  <td><i>Joos 2</i></td>
+  <td><i>Java 1.3</i></td>
+</tr>
+<tr><td><a href="features/if.html">if</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/while.html">while</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/for.html">for (simple)</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/formult.html">for (general)</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/dowhile.html">do-while</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/switch.html">switch</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/break.html">break</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/continue.html">continue</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/labeledstatement.html">labeled statement</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/synchronizedstatement.html">synchronized statement</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+
+<tr>
+<td align=center colspan=6><b>Exceptions</b></td>
+</tr>
+<tr>
+  <td><i>Feature</i></td>
+  <td><i>Joos 0</i></td>
+  <td><i>Joos 1</i></td>
+  <td><i><b>Joos 1W</b></i></td>
+  <td><i>Joos 2</i></td>
+  <td><i>Java 1.3</i></td>
+</tr>
+<tr><td><a href="features/throws.html">throws</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/throw.html">throw</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/trycatch.html">try/catch</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/finally.html">finally</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr>
+<td align=center colspan=6><b>Types</b></td>
+</tr>
+<tr>
+  <td><i>Feature</i></td>
+  <td><i>Joos 0</i></td>
+  <td><i>Joos 1</i></td>
+  <td><i><b>Joos 1W</b></i></td>
+  <td><i>Joos 2</i></td>
+  <td><i>Java 1.3</i></td>
+</tr>
+
+<tr><td><a href="features/boolean.html">boolean</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/int.html">int</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/char.html">char</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/byte.html">byte</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/short.html">short</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/array.html">array</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/array_suffix.html">array declaration after variable name</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/array_return.html">array return type</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/array_return_suffix.html">array return type after method signature</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/multiarray.html">multi array</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/long.html">long</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/float.html">float</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/double.html">double</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+
+<tr>
+<td align=center colspan=6><b>Literals and names</b></td>
+</tr>
+<tr>
+  <td><i>Feature</i></td>
+  <td><i>Joos 0</i></td>
+  <td><i>Joos 1</i></td>
+  <td><i><b>Joos 1W</b></i></td>
+  <td><i>Joos 2</i></td>
+  <td><i>Java 1.3</i></td>
+</tr>
+<tr><td><a href="features/intliterals.html">int literals</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/booleanliterals.html">boolean literals</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/stringliterals.html">string literals</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/nullliteral.html">null literal</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/this.html">this primary expression</a></td>
+    <td align=center></td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/charliterals.html">char literals</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/characterescapes.html">character escapes</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/unicodeescapes.html">Unicode escapes</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/compoundnames.html">compound names</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/classliterals.html">class literals</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/octalandhexliterals.html">octal and hex literals</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/longliterals.html">long literals</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/floatingpointliterals.html">floating point literals</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/arraydata.html">array data</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+<tr><td><a href="features/comment.html">comments</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+<tr><td><a href="features/javadoc.html">Javadoc comments</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>&nbsp;</td>
+</tr>
+</tr>
+
+<tr>
+<td align=center colspan=6><b>Operations</b></td>
+</tr>
+<tr>
+  <td><i>Feature</i></td>
+  <td><i>Joos 0</i></td>
+  <td><i>Joos 1</i></td>
+  <td><i><b>Joos 1W</b></i></td>
+  <td><i>Joos 2</i></td>
+  <td><i>Java 1.3</i></td>
+</tr>
+<tr><td><a href="features/arithmeticoperations.html">arithmetic operations</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/comparisonoperations.html">comparison operations</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/eagerbooleanoperations.html">eager boolean operations</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/implicitstringconcatenation.html">implicit string concatenation</a></td>
+    <td align=center>X</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/lazybooleanoperations.html">lazy boolean operations</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/instanceof.html">instanceof</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/primitivecasts.html">primitive casts</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/referencecasts.html">reference casts</a></td>
+    <td align=center>&nbsp;</td><td align=center>X</td><td align=center><b>X</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/bitwiseoperations.html">bitwise operations</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/incrementanddecrement.html">increment and decrement</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>X</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/assignmentoperations.html">assignment operations</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/unaryplus.html">unary plus</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/choice.html">choice</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/bitshift.html">bit shift</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+<tr><td><a href="features/implicitintegerconstantcasts.html">implicit integer constant casts</a></td>
+    <td align=center>&nbsp;</td><td align=center>&nbsp;</td><td align=center><b>&nbsp;</b></td><td align=center>&nbsp;</td><td align=center>X</td>
+</tr>
+
+
+
+
+</table>
+
+</body>
+</html>

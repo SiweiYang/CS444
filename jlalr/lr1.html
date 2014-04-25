@@ -1,0 +1,77 @@
+<html>
+  <head><title>LR1 File Format (.lr1)</title>
+      </head><body><h1>LR1 File Format (.lr1) CS 444</h1>
+A .lr1 file has two components:
+<ul><li>a context-free grammar
+</li><li>the states, transitions, and reduce actions of the LR(1) machine
+</li></ul>
+<h3>Context-free Grammar</h3>
+Same as <a href="cfg.html">the CFG File Format</a>. The
+grammar must be augmented; that is, the start symbol must occur as the
+LHS of exactly one rule that begins and ends with a terminal.
+<h3>LR(1) Machine</h3>
+The parser representation has three components:
+<ul>
+<li>An integer <i>s</i> -- the number of states in the LR(1) parser.  States are numbered
+0 to <i>s</i>-1. State 0 is the start state.
+</li><li>An integer <i>t</i> -- the number of transitions or reduce actions in the LR(1)
+parser.
+</li><li><i>t</i> lines, each containing one of:
+<ul>
+<li><i>state </i><i>terminal</i> <tt>reduce</tt> <i>rule</i>  <i>(Rules (productions) are numbered from
+0 in the order they appear in the CFG.)</i>
+</li><li>
+<i>state<sub>1</sub> </i><i>symbol</i> <tt>shift</tt> <i>state<sub>2</sub></i> (where <i>symbol</i> is either a terminal or a non-terminal)
+</li></ul>
+</li></ul>
+<h3><a href="sample.lr1">Example .lr1 File</a> (see <a href="./sample.pdf">bubble diagram</a>)</h3>
+<pre>6
+BOF
+EOF
+id
+-
+(
+)
+3
+S
+expr
+term
+S
+5
+S BOF expr EOF
+expr term
+expr expr - term
+term id
+term ( expr )
+11
+28
+8 EOF reduce 2
+9 - reduce 4
+7 - shift 1
+1 id shift 2
+6 ( shift 3
+6 term shift 4
+10 EOF shift 5
+2 - reduce 3
+4 ) reduce 1
+3 id shift 2
+4 EOF reduce 1
+2 ) reduce 3
+0 BOF shift 6
+8 - reduce 2
+2 EOF reduce 3
+3 expr shift 7
+9 ) reduce 4
+9 EOF reduce 4
+4 - reduce 1
+1 term shift 8
+3 term shift 4
+3 ( shift 3
+10 - shift 1
+6 id shift 2
+8 ) reduce 2
+1 ( shift 3
+7 ) shift 9
+6 expr shift 10
+</pre>
+</body></html>
